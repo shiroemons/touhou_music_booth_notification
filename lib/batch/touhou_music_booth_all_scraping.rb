@@ -1,4 +1,4 @@
-browser = Ferrum::Browser.new
+browser = Ferrum::Browser.new({ timeout: 30, process_timeout: 30 })
 browser.headers.set({ 'accept-language' => 'ja' })
 base_url = 'https://touhou-music.booth.pm/items'
 browser.go_to(base_url)
