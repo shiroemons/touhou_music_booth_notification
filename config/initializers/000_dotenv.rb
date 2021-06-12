@@ -1,0 +1,1 @@
+Dotenv::Railtie.load if Rails.env.development?

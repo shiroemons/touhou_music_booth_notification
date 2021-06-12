@@ -69,6 +69,10 @@ GEM
     cliver (0.3.2)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     erubi (1.10.0)
     ferrum (0.11)
       addressable (~> 2.5)
@@ -159,6 +163,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.4)
   byebug
+  dotenv-rails
   ferrum
   listen (~> 3.3)
   pg (~> 1.1)
