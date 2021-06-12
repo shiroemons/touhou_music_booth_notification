@@ -18,13 +18,16 @@ loop do
     if item.new_record?
       item.save!
       tweet = <<~EOS
-        【🆕東方同人音楽流通 BOOTH店 新着情報🆕】
+        【🆕新着情報🆕】
 
         #{category}
         #{name}
         #{price}円
         
         #{url}
+        東方同人音楽流通 BOOTH店
+
+        #booth_pm #東方同人音楽流通
       EOS
       twitter_client.tweet(tweet)
     end
