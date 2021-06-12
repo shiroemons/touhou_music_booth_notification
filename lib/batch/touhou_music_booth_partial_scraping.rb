@@ -3,6 +3,8 @@ browser.headers.set({ 'accept-language' => 'ja' })
 base_url = 'https://touhou-music.booth.pm/items'
 browser.go_to('https://touhou-music.booth.pm/items?page=10')
 
+twitter_client = TwitterClient.new
+
 loop do
   puts browser.url
   elements = browser.css('ul.item-list li').reverse
@@ -13,7 +15,19 @@ loop do
     url = e.at_css("h2 a").property(:href)
     image_url = e.at_css("div img").property(:src)
     item = Item.find_or_initialize_by(name: name, category: category, price: price, url: url, image_url: image_url)
-    item.save! if item.new_record?
+    if item.new_record?
+      item.save!
+      tweet = <<~EOS
+        【🆕東方同人音楽流通 BOOTH店 新着情報🆕】
+
+        #{category}
+        #{name}
+        #{price}円
+        
+        #{url}
+      EOS
+      twitter_client.tweet(tweet)
+    end
   end
   if browser.url.to_s == base_url
     break

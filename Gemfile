@@ -33,3 +33,4 @@ group :development do
 end
 
 gem 'ferrum'
+gem 'twitter'
