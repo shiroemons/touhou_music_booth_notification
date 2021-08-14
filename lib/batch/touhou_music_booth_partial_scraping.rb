@@ -36,6 +36,7 @@ if (0..12).cover?(Time.zone.now.utc.hour)
           #booth_pm #東方デジタル音楽
         EOS
         twitter_client.tweet(tweet)
+        sleep(5)
       end
     end
     if browser.url.to_s == base_url
