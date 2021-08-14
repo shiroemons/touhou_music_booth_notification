@@ -1,8 +1,7 @@
 # TODO: 収集処理をクラス化する
 
 # 対象時間 9時〜21時 JST
-# if (0..12).cover?(Time.zone.now.utc.hour)
-if (0..23).cover?(Time.zone.now.utc.hour)
+if (0..12).cover?(Time.zone.now.utc.hour)
   browser = Ferrum::Browser.new({ timeout: 30, process_timeout: 30 })
   browser.headers.set({ 'accept-language' => 'ja' })
   base_url = 'https://booth.pm/ja/browse/%E9%9F%B3%E6%A5%BD?in_stock=true&new_arrival=true&q=%E6%9D%B1%E6%96%B9Project&sort=new&type=digital'
