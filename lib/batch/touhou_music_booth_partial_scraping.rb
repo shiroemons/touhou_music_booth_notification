@@ -41,7 +41,7 @@ if (0..15).cover?(Time.zone.now.utc.hour)
       elsif item.price != price
         item.update!(price: price)
         tweet = <<~EOS
-          【🆕更新情報🆕】
+          【🆙更新情報🆙】
 
           #{category}
           #{name}
