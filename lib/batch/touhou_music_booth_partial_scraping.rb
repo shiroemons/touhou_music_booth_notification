@@ -15,13 +15,14 @@ if (0..12).cover?(Time.zone.now.utc.hour)
       category = e.at_css('div.item-card__category').text
       name = e.at_css('div.item-card__title').text
       shop_name = e.at_css('div.item-card__shop-name').text.strip
-      price = e.attribute('data-product-price').to_i
+      price = e.attribute('data-product-price').to_d
       url = e.at_css("div.item-card__title a").property(:href)
       image_url = e.at_css("div img").property(:src)
       next if shop_name.start_with?("【楽譜ストア】")
 
-      item = Item.find_or_initialize_by(name: name, category: category, price: price, url: url, image_url: image_url)
+      item = Item.find_or_initialize_by(name: name, category: category, url: url, image_url: image_url)
       if item.new_record?
+        item.price = price
         item.save!
         tweet = <<~EOS
           【🆕新着情報🆕】
@@ -33,6 +34,22 @@ if (0..12).cover?(Time.zone.now.utc.hour)
           #{url}
           #{shop_name}
   
+          #booth_pm #東方デジタル音楽
+        EOS
+        twitter_client.tweet(tweet)
+        sleep(5)
+      elsif item.price != price
+        item.update!(price: price)
+        tweet = <<~EOS
+          【🆕更新情報🆕】
+
+          #{category}
+          #{name}
+          #{item.price_previously_was}円 -> #{price}円
+
+          #{url}
+          #{shop_name}
+
           #booth_pm #東方デジタル音楽
         EOS
         twitter_client.tweet(tweet)
