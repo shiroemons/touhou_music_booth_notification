@@ -29,7 +29,7 @@ if (0..15).cover?(Time.zone.now.utc.hour)
   
           #{category}
           #{name}
-          #{price}円
+          #{price.to_i}円
           
           #{url}
           #{shop_name}
@@ -45,7 +45,7 @@ if (0..15).cover?(Time.zone.now.utc.hour)
 
           #{category}
           #{name}
-          #{item.price_previously_was}円 -> #{price}円
+          #{item.price_previously_was.to_i}円 -> #{price.to_i}円
 
           #{url}
           #{shop_name}
