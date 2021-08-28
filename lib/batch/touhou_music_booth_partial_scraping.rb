@@ -18,7 +18,7 @@ if (0..15).cover?(Time.zone.now.utc.hour)
       price = e.attribute('data-product-price').to_d
       url = e.at_css("div.item-card__title a").property(:href)
       image_url = e.at_css("div img").property(:src)
-      next if shop_name.start_with?("【楽譜ストア】")
+      next if shop_name.start_with?("楽譜")
 
       item = Item.find_or_initialize_by(name: name, category: category, url: url, image_url: image_url)
       if item.new_record?
