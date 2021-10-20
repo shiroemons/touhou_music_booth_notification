@@ -18,8 +18,8 @@ elements.each do |e|
 end
 
 # 前に戻るボタンのチェック
-browser.go_to('https://booth.pm/ja/browse/%E9%9F%B3%E6%A5%BD?in_stock=true&new_arrival=true&page=5&q=%E6%9D%B1%E6%96%B9Project&sort=new&type=digital')
-link = browser.at_css('div.pager > nav > ul > li:nth-child(2) > a')
-link.focus.click
-browser.network.wait_for_idle
-puts browser.url
+# browser.go_to('https://booth.pm/ja/browse/%E9%9F%B3%E6%A5%BD?in_stock=true&new_arrival=true&page=5&q=%E6%9D%B1%E6%96%B9Project&sort=new&type=digital')
+# link = browser.at_css('div.pager > nav > ul > li:nth-child(2) > a')
+# link.focus.click
+# browser.network.wait_for_idle
+# puts browser.url

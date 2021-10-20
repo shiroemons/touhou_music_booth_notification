@@ -5,7 +5,9 @@ if (0..15).cover?(Time.zone.now.utc.hour)
   browser = Ferrum::Browser.new({ timeout: 30, process_timeout: 30 })
   browser.headers.set({ 'accept-language' => 'ja' })
   base_url = 'https://booth.pm/ja/browse/%E9%9F%B3%E6%A5%BD?in_stock=true&new_arrival=true&q=%E6%9D%B1%E6%96%B9Project&sort=new&type=digital'
-  browser.go_to('https://booth.pm/ja/browse/%E9%9F%B3%E6%A5%BD?in_stock=true&new_arrival=true&page=5&q=%E6%9D%B1%E6%96%B9Project&sort=new&type=digital')
+  # 新着順で2ページ以降が表示されなくなったためコメントアウト
+  # browser.go_to('https://booth.pm/ja/browse/%E9%9F%B3%E6%A5%BD?in_stock=true&new_arrival=true&page=5&q=%E6%9D%B1%E6%96%B9Project&sort=new&type=digital')
+  browser.go_to(base_url)
   twitter_client = TwitterClient.new
 
   loop do
