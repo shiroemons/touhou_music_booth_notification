@@ -37,6 +37,7 @@ if (0..15).cover?(Time.zone.now.utc.hour)
           #{shop_name}
   
           #booth_pm #東方デジタル音楽
+          #東方Project #東方楽曲 #東方アレンジ
         EOS
         twitter_client.tweet(tweet)
         sleep(5)
@@ -53,6 +54,7 @@ if (0..15).cover?(Time.zone.now.utc.hour)
           #{shop_name}
 
           #booth_pm #東方デジタル音楽
+          #東方Project #東方楽曲 #東方アレンジ
         EOS
         twitter_client.tweet(tweet)
         sleep(5)
